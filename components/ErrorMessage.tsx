@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 type ErrorMsgProps = {
     title: string;
     description?: string;
@@ -18,12 +20,12 @@ export default function ErrorMessage({ title, description, code }: ErrorMsgProps
                         Code: <code className="bg-gray-100 px-2 py-1 rounded">{code}</code>
                     </p>
                 )} */}
-                <a
+                <Link
                     href="/"
                     className="inline-block bg-[#2acfcf] hover:bg-[#25baba] text-white px-6 py-2 rounded font-medium transition"
                 >
                     Back to home page
-                </a>
+                </Link>
             </div>
         </div>
     );

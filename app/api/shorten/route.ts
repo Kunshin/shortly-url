@@ -22,9 +22,11 @@ export async function POST(request: NextRequest) {
         } else {
             throw new Error("Failed to shorten the link");
         }
-    } catch (error: any) {
+    } catch (error) {
+        const errorMsg =
+            error instanceof Error ? error.message : "An error occurred";
         return NextResponse.json(
-            { status: "error", message: error.message },
+            { status: "error", message: errorMsg },
             { status: 400 }
         );
     }

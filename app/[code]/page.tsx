@@ -1,7 +1,7 @@
 import { permanentRedirect } from 'next/navigation';
 import ErrorMessage from '@/components/ErrorMessage';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+// import Header from '@/components/Header';
+// import Footer from '@/components/Footer';
 
 export default async function RedirectPage({ params }: { params: Promise<{ code: string }> }) {
     const { code } = await params;
