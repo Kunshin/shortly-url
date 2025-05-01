@@ -1,16 +1,20 @@
 import { permanentRedirect } from 'next/navigation';
-import ErrorMessage from '../../components/ErrorMessage';
+import ErrorMessage from '@/components/ErrorMessage';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 export default async function RedirectPage({ params }: { params: Promise<{ code: string }> }) {
     const { code } = await params;
-    let errorMsg = "Không tìm thấy link rút gọn";
-    const API_URL = "https://demo.toicoding.com/";
+    const API_URL = process.env.API_URL;
+
+    const title = "Error";
+    let errorMsg = "";
 
     const response = await fetch(`${API_URL}/api/link/${code}`, {
         headers: {
             "Content-Type": "application/json",
         },
-        cache: 'no-store', // đảm bảo luôn fetch mới, không bị cache
+        cache: 'no-store',
     });
 
     if (response.ok) {
@@ -24,10 +28,18 @@ export default async function RedirectPage({ params }: { params: Promise<{ code:
             }
         }
 
-        errorMsg = message;
+        errorMsg = message || "An error occurred";
+    } else {
+        errorMsg = "An error occurred";
     }
 
-    const title = "Error";
-
-    return <ErrorMessage title={title} description={errorMsg} code={code} />;
+    return (
+        <>
+            {/* <Header /> */}
+            <main>
+                <ErrorMessage title={title} description={errorMsg} code={code} />
+            </main>
+            {/* <Footer /> */}
+        </>
+    );
 }

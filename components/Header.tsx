@@ -8,8 +8,8 @@ export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <header className="h-24 flex justify-between items-center px-6 md:px-[10%] py-6">
-            <Link href={"#"}>
+        <header className="h-24 flex justify-between items-center px-6 lg:px-[10%] py-6">
+            <Link href={"/"}>
                 <Image
                     src="/images/logo.svg"
                     alt="Logo"
@@ -18,14 +18,14 @@ export default function Header() {
                 />
             </Link>
             <Image
-                className="md:hidden"
+                className="lg:hidden"
                 src="/images/icon-menu.svg"
                 alt="menu"
                 width={28}
                 height={28}
                 onClick={() => setIsOpen((prev) => !prev)}
             />
-            <div className={`justify-between flex-1 ms-16 font-semibold text-grayish-violet text-center hidden md:flex ${isOpen && 'open-menu'}`}>
+            <div className={`justify-between flex-1 ms-16 font-semibold text-grayish-violet text-center hidden lg:flex ${isOpen && 'open-menu'}`}>
                 <nav className="flex flex-col lg:flex-row items-center gap-6">
                     <Link href={"#"}>Features</Link>
                     <Link href={"#"}>Pricing</Link>
