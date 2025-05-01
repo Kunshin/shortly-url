@@ -1,7 +1,12 @@
+'use client'
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Header() {
+    const [isOpen, setIsOpen] = useState(false);
+
     return (
         <header className="h-24 flex justify-between items-center px-6 md:px-[10%] py-6">
             <Link href={"#"}>
@@ -15,19 +20,21 @@ export default function Header() {
             <Image
                 className="md:hidden"
                 src="/images/icon-menu.svg"
-                alt=""
+                alt="menu"
                 width={28}
                 height={28}
+                onClick={() => setIsOpen((prev) => !prev)}
             />
-            <div className="flex justify-between flex-1 ms-4 hidden md:flex">
-                <nav className="space-x-6">
+            <div className={`justify-between flex-1 ms-16 font-semibold text-grayish-violet text-center hidden md:flex ${isOpen && 'open-menu'}`}>
+                <nav className="flex flex-col lg:flex-row items-center gap-6">
                     <Link href={"#"}>Features</Link>
                     <Link href={"#"}>Pricing</Link>
                     <Link href={"#"}>Resources</Link>
                 </nav>
-                <nav className="space-x-6">
+                <hr className="lg:hidden" />
+                <nav className="flex flex-col lg:flex-row items-center gap-6">
                     <Link href={"#"}>Login</Link>
-                    <Link href={"#"} className="bg-cyan-400 rounded-2xl text-white p-2 font-semibold">Sign Up</Link>
+                    <Link href={"#"} className="bg-primary rounded-full text-white px-6 py-3 w-full lg:w-fit">Sign Up</Link>
                 </nav>
             </div>
         </header>
