@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CopyButton from "@/components/CopyButton";
 
 export default function Home() {
     const [shortenUrls, setShortenUrls] = useState<any>([]);
@@ -95,28 +96,10 @@ export default function Home() {
                                             <Link className="w-full truncate" href={item.original_url}>{item.original_url}</Link>
                                             <hr className="md:hidden" />
                                             <Link className="text-primary w-full truncate md:text-right" href={item.short_url}>{item.short_url}</Link>
-                                            <button className="bg-primary rounded-md text-white font-bold p-2 w-full md:w-32 md:ml-4">Copy</button>
+                                            <CopyButton textToCopy={item.short_url} />
                                         </div>
                                     );
                                 })}
-                                {/* <div className="bg-white p-4 md:px-6 md:py-3 mt-5 rounded-md flex flex-col md:flex-row md:items-center gap-2">
-                                    <Link className="w-full truncate" href={'https://www.frontendmentor.io'}>https://www.frontendmentor.io</Link>
-                                    <hr className="md:hidden" />
-                                    <Link className="text-primary" href={'https://rel.ink/k4lKyk'}>https://rel.ink/k4lKyk</Link>
-                                    <button className="bg-primary rounded-md text-white font-bold p-2 w-full md:w-32 md:ml-4">Copy</button>
-                                </div>
-                                <div className="bg-white p-4 md:px-6 md:py-3 mt-5 rounded-md flex flex-col md:flex-row md:items-center gap-2">
-                                    <Link className="w-full truncate" href={'https://twitter.com/frontendmentor'}>https://twitter.com/frontendmentor</Link>
-                                    <hr className="md:hidden" />
-                                    <Link className="text-primary" href={'https://rel.ink/gxOXp9'}>https://rel.ink/gxOXp9</Link>
-                                    <button className="bg-secondary rounded-md text-white font-bold p-2 w-full md:w-32 md:ml-4">Copied!</button>
-                                </div>
-                                <div className="bg-white p-4 md:px-6 md:py-3 mt-5 rounded-md flex flex-col md:flex-row md:items-center gap-2">
-                                    <Link className="w-full truncate" href={'https://www.linkedin.com/company/frontend-mentor'}>https://www.linkedin.com/company/frontend-mentor</Link>
-                                    <hr className="md:hidden" />
-                                    <Link className="text-primary" href={'https://rel.ink/gob3X9'}>https://rel.ink/gob3X9</Link>
-                                    <button className="bg-primary rounded-md text-white font-bold p-2 w-full md:w-32 md:ml-4">Copy</button>
-                                </div> */}
                             </div>
                         )}
                     </div>
@@ -174,7 +157,7 @@ export default function Home() {
                     </div>
                 </section>
 
-                <section className="h-72 bg-secondary bg-[url(/images/bg-boost-mobile.svg)] md:bg-[url(/images/bg-boost-desktop.svg)] bg-repeat-round flex flex-col justify-center items-center gap-4">
+                <section className="h-72 bg-secondary bg-[url(/images/bg-boost-mobile.svg)] sm:bg-[url(/images/bg-boost-desktop.svg)] bg-repeat-round flex flex-col justify-center items-center gap-4">
                     <h2 className="font-bold text-3xl md:text-4xl text-white">Boost your links today</h2>
                     <Link href={"#"} className="bg-primary rounded-full text-white px-8 py-3 font-bold text-xl">Get Started</Link>
                 </section>
