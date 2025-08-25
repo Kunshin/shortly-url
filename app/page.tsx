@@ -9,6 +9,7 @@ import CopyButton from "@/components/CopyButton";
 
 export default function Home() {
     const [shortenUrls, setShortenUrls] = useState<any>([]);
+    const [loading, setLoading] = useState(false);
     const [isValid, setIsValid] = useState(false);
     const [errorMsg, setErrorMsg] = useState('Please add a link');
     const [longUrl, setLongUrl] = useState('');
@@ -16,6 +17,7 @@ export default function Home() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
+        setLoading(true);
         setIsValid(false);
 
         if (longUrl.length > 0) {
@@ -36,6 +38,8 @@ export default function Home() {
         } else {
             setIsValid(true);
         }
+
+        setLoading(false);
     };
 
     const handleSave = (url: any) => {
@@ -85,7 +89,7 @@ export default function Home() {
                                     <label className="text-red-400 font-semibold italic absolute left-0 -bottom-6">{errorMsg}</label>
                                 )}
                             </div>
-                            <button className="bg-primary rounded-lg text-white text-xl font-bold w-full lg:w-1/5 p-4" type="submit">Shorten It!</button>
+                            <button className={`rounded-lg text-white text-xl font-bold w-full lg:w-1/5 p-4 ${loading ? "cursor-not-allowed bg-[#9be3e3]" : "bg-primary"}`} type="submit" disabled={loading}>Shorten It!</button>
                         </form>
 
                         {shortenUrls.length > 0 && (
